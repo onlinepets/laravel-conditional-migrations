@@ -3,7 +3,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-circleci]][link-circleci]
+[![Build Status][ico-travis]][link-travis]
 [![StyleCI][ico-styleci]][link-styleci]
 
 This package allows you to configure migrations to run based on a condition. We
@@ -139,10 +139,11 @@ see the [license file](LICENSE.md) for more information.
 [ico-version]: https://img.shields.io/packagist/v/onlinepets/laravel-conditional-migrations.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/onlinepets/laravel-conditional-migrations.svg?style=flat-square
-[ico-circleci]: https://img.shields.io/circleci/project/github/onlinepets/laravel-conditional-migrations.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/USER/REPO.svg
+
 [ico-styleci]: https://styleci.io/repos/:styleci/shield
 
 [link-packagist]: https://packagist.org/packages/onlinepets/laravel-conditional-migrations
 [link-downloads]: https://packagist.org/packages/onlinepets/laravel-conditional-migrations
-[link-circleci]: https://circleci.com/gh/onlinepets/laravel-conditional-migrations
+[link-travis]: https://travis-ci.org/onlinepets/laravel-conditional-migrations
 [link-styleci]: https://styleci.io/repos/:styleci
