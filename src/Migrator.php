@@ -50,12 +50,12 @@ class Migrator extends LaravelMigrator
         }
 
         if ($migration instanceof ConditionalMigration && !$this->shouldRunNow($migration)) {
-            $this->note("<info>Skipped migrating</info> {$name}");
+            $this->note("<info>Skipped migrating</info>  {$name}");
 
             return;
         }
 
-        $this->note("<comment>Migrating:</comment> {$name}");
+        $this->note("<comment>Migrating:</comment>  {$name}");
 
         $this->runMigration($migration, 'up');
 
@@ -74,8 +74,8 @@ class Migrator extends LaravelMigrator
      */
     protected function shouldRunNow(ConditionalMigration $migration): bool
     {
-        $shouldRun = value($this->config->get('timed-migrations.should_run'));
+        $alwaysRun = value($this->config->get('conditional-migrations.always_run'));
 
-        return $shouldRun || $migration->shouldRun();
+        return $alwaysRun || $migration->shouldRun();
     }
 }

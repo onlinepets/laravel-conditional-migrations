@@ -7,8 +7,6 @@ return [
      * whether the migration(s) should be run or not. You may
      * calculate times, check environment variables, etc.
      */
-    'should_run' => function () {
-        return config('app.debug', false);
-    },
+    'always_run' => false,
 
 ];

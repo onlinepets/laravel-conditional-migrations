@@ -25,6 +25,8 @@ class ServiceProvider extends LaravelProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/conditional-migrations.php', 'conditional-migrations');
+
         $this->app->extend('migrator', function ($migrator, $app) {
             return new Migrator($app['migration.repository'], $app['db'], $app['files'], $app['config']);
         });

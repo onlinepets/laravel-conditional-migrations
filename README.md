@@ -110,7 +110,7 @@ configure whether your migrations should run, _regardless of individual configur
 ```php
 return [
     
-    'should_run' => env('APP_DEBUG', false),
+    'always_run' => env('APP_DEBUG', false),
     
 ];
 ``` 
@@ -120,7 +120,7 @@ You can also use a closure if you want to do more advanced calculations:
 ```php
 return [
 
-    'should_run' => function (): bool {
+    'always_run' => function (): bool {
         // calculate whether it should run
     },
 
