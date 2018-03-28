@@ -3,9 +3,9 @@
 return [
 
     /*
-     * This closure returns a boolean value that should determine
-     * whether the migration(s) should be run or not. You may
-     * calculate times, check environment variables, etc.
+     * This value will be used to determine whether or not the
+     * conditional migration(s) should run. This an also be
+     * a closure if you need more advanced calculations.
      */
     'always_run' => false,
 
