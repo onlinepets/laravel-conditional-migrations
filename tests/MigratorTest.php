@@ -2,11 +2,9 @@
 
 namespace Onlinepets\ConditionalMigrations\Tests;
 
-use Illuminate\Container\Container;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Migrations\DatabaseMigrationRepository;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Facade;
 use Onlinepets\ConditionalMigrations\Migrator;
 
 class MigratorTest extends TestCase
@@ -34,10 +32,7 @@ class MigratorTest extends TestCase
 
         $db->setAsGlobal();
 
-        $container = new Container;
-        $container->instance('db', $db->getDatabaseManager());
-
-        Facade::setFacadeApplication($container);
+        $this->app->instance('db', $db->getDatabaseManager());
 
         $this->migrator = new Migrator(
             $repository = new DatabaseMigrationRepository($db->getDatabaseManager(), 'migrations'),
@@ -49,12 +44,6 @@ class MigratorTest extends TestCase
         if (! $repository->repositoryExists()) {
             $repository->createRepository();
         }
-    }
-
-    public function tearDown()
-    {
-        Facade::clearResolvedInstances();
-        Facade::setFacadeApplication(null);
     }
 
     /** @test */
