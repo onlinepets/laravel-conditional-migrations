@@ -140,9 +140,9 @@ see the [license file](LICENSE.md) for more information.
 [ico-license]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/onlinepets/laravel-conditional-migrations.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/onlinepets/laravel-conditional-migrations.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/:styleci/shield
+[ico-styleci]: https://styleci.io/repos/127100183/shield
 
 [link-packagist]: https://packagist.org/packages/onlinepets/laravel-conditional-migrations
 [link-downloads]: https://packagist.org/packages/onlinepets/laravel-conditional-migrations
 [link-travis]: https://travis-ci.org/onlinepets/laravel-conditional-migrations
-[link-styleci]: https://styleci.io/repos/:styleci
+[link-styleci]: https://styleci.io/repos/127100183
