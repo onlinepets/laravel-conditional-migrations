@@ -54,7 +54,7 @@ register the `\Onlinepets\ConditionalMigrations\ServiceProvider` in `config/app.
 ```
 
 ## Usage
-To flag a migration to run only between 1AM and 2AM, implement the `ConditionalMigration`
+To ensure a migration only runs between 1 AM and 2 AM, implement the `ConditionalMigration`
 interface and its `->shouldRun()` method:
 
 ```php
@@ -89,7 +89,7 @@ class DoSomethingVeryIntensive extends Migration implements ConditionalMigration
 ```
 
 The code snippet above will make sure the `do_something_very_intensive` migration
-will be skipped unless it is executed between 1AM and 2AM. This is mostly useful
+will be skipped unless it is executed between 1 AM and 2 AM. This can be useful
 if your migration does something that should not be run during the daytime, like
 adding an index to a table containing lots of data.
 
