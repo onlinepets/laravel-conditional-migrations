@@ -91,7 +91,7 @@ class DoSomethingVeryIntensive extends Migration implements RunsInTimeframe
 ```
 
 The code snippet above will make sure the `do_something_very_intensive` migration
-will only run successfully when executed between 1AM and 2AM. This is mostly useful
+will be skipped unless it is executed between 1AM and 2AM. This is mostly useful
 if your migration does something that should not be run during the daytime, like
 adding an index to a table containing lots of data.
 
