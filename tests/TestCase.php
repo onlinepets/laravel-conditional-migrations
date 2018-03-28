@@ -1,8 +1,8 @@
 <?php
 
-namespace Sven\:namespace\Tests;
+namespace Onlinepets\TimedMigrations\Tests;
 
-use Sven\:namespace\ServiceProvider;
+use Onlinepets\TimedMigrations\ServiceProvider;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
 
 abstract class TestCase extends AbstractPackageTestCase

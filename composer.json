@@ -1,29 +1,33 @@
 {
-    "name": "sven/:package",
-    "description": "",
-    "keywords": [],
+    "name": "onlinepets/laravel-timed-migrations",
+    "description": "Run your Laravel migrations at a specified time",
+    "keywords": ["laravel", "migrations", "database", "cronjob", "cron", "eloquent"],
     "license": "MIT",
     "authors": [
         {
             "name": "Sven Luijten",
             "email": "svenluijten1995@gmail.com",
             "homepage": "https://svenluijten.com"
+        },
+        {
+            "name": "Thomas Moors",
+            "email": "thomas.moors@medpets.nl"
         }
     ],
     "require": {
-        "php": "^7.1"
+        "php": "^7.0"
     },
     "require-dev": {
         "graham-campbell/testbench": "^4.0"
     },
     "autoload": {
         "psr-4": {
-            "Sven\\:namespace\\": "src/"
+            "Onlinepets\\TimedMigrations\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Sven\\:namespace\\Tests\\": "tests/"
+            "Onlinepets\\TimedMigrations\\Tests\\": "tests/"
         }
     },
     "config": {
@@ -32,11 +36,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Sven\\:namespace\\ServiceProvider"
-            ],
-            "aliases": {
-                ":namespace": "Sven\\:namespace\\Facades\\:namespace"
-            }
+                "Onlinepets\\TimedMigrations\\ServiceProvider"
+            ]
         }
     }
 }
