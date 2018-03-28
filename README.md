@@ -8,7 +8,7 @@
 
 This package allows you to configure migrations to run when you want them to. We
 expose a `RunsInTimeframe` interface, which you can have your migrations
-implement to determine when it should be ran.
+implement to determine when it should be run.
 
 ## Index
 - [Installation](#installation)
@@ -54,7 +54,7 @@ register the `\Onlinepets\TimedMigrations\ServiceProvider` in `config/app.php`:
 
 ## Usage
 To flag a migration to run only between 1AM and 2AM, implement the `RunsInTimeframe`
-interface and flesh out the `->getTimesToRunBetween()` method:
+interface and its `->getTimesToRunBetween()` method:
 
 ```php
 <?php
