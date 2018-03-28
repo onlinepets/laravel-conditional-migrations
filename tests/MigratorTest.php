@@ -64,10 +64,10 @@ class MigratorTest extends TestCase
             __DIR__.'/migrations/always',
         ]);
 
-        $this->assertTrue($this->db->schema()->hasTable('untimed_users'));
+        $this->assertTrue($this->db->schema()->hasTable('unconditional_users'));
 
         $this->assertCount(1, $ran);
-        $this->assertContains('untimed_users_table', $ran[0]);
+        $this->assertContains('unconditional_users_table', $ran[0]);
     }
 
     /** @test */
@@ -78,9 +78,9 @@ class MigratorTest extends TestCase
             __DIR__.'/migrations/conditional',
         ]);
 
-        $this->assertTrue($this->db->schema()->hasTable('untimed_users'));
-        $this->assertTrue($this->db->schema()->hasTable('timed_users_one'));
-        $this->assertFalse($this->db->schema()->hasTable('timed_users_two'));
+        $this->assertTrue($this->db->schema()->hasTable('unconditional_users'));
+        $this->assertTrue($this->db->schema()->hasTable('conditional_users_one'));
+        $this->assertFalse($this->db->schema()->hasTable('conditional_users_two'));
     }
 
     /** @test */
@@ -92,7 +92,7 @@ class MigratorTest extends TestCase
             __DIR__.'/migrations/conditional',
         ]);
 
-        $this->assertTrue($this->db->schema()->hasTable('timed_users_one'));
-        $this->assertTrue($this->db->schema()->hasTable('timed_users_two'));
+        $this->assertTrue($this->db->schema()->hasTable('conditional_users_one'));
+        $this->assertTrue($this->db->schema()->hasTable('conditional_users_two'));
     }
 }

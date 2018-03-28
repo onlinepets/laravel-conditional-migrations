@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Onlinepets\ConditionalMigrations\Contracts\ConditionalMigration;
 
-class CreateTimedUsersTwoTable extends Migration implements ConditionalMigration
+class CreateConditionalUsersOneTable extends Migration implements ConditionalMigration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateTimedUsersTwoTable extends Migration implements ConditionalMigration
      */
     public function up()
     {
-        Schema::create('timed_users_two', function (Blueprint $table) {
+        Schema::create('conditional_users_one', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
@@ -28,7 +28,7 @@ class CreateTimedUsersTwoTable extends Migration implements ConditionalMigration
      */
     public function down()
     {
-        Schema::dropIfExists('timed_users_two');
+        Schema::dropIfExists('conditional_users_one');
     }
 
     /**
@@ -36,6 +36,6 @@ class CreateTimedUsersTwoTable extends Migration implements ConditionalMigration
      */
     public function shouldRun(): bool
     {
-        return false;
+        return true;
     }
 }
