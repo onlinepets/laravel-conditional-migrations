@@ -82,8 +82,8 @@ class DoSomethingVeryIntensive extends Migration implements ConditionalMigration
 
     public function shouldRun(): bool
     {
-        return (new Carbon('1 AM'))->greaterThan(now()) &&
-            (new Carbon('2 AM'))->lessThan(now());
+        return (new Carbon('1 AM'))->lessThan(now())
+            && (new Carbon('2 AM'))->greaterThan(now());
     }
 }
 ```
