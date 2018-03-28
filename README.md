@@ -54,7 +54,7 @@ register the `\Onlinepets\ConditionalMigrations\ServiceProvider` in `config/app.
 ```
 
 ## Usage
-To ensure a migration only runs between 1 AM and 2 AM, implement the `ConditionalMigration`
+To make sure a migration only runs between 1 AM and 2 AM, implement the `ConditionalMigration`
 interface and its `->shouldRun()` method:
 
 ```php
