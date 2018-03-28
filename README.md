@@ -129,9 +129,9 @@ return [
 ];
 ```
 
-> **Note:** The value from the configuration file will always take precedence over
-> the one configured in the migration's `->getTimesToRunBetween()` method. If you do
-> not wish to use the migration's method, simply return an empty array (`[]`) from there.
+> **Note:** The value from the configuration file will always take precedence over the one
+> configured in the migration via the `->getTimesToRunBetween()` method. If you do not wish
+> to use the migration's method, simply return an empty array (`[]`) from there.
 
 ## Contributing
 All contributions (pull requests, issues and feature requests) are
