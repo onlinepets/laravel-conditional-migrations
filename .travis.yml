@@ -11,9 +11,14 @@ cache:
   directories:
     - $HOME/.composer/cache
 
+env:
+  matrix:
+    - COMPOSER_FLAGS="--prefer-lowest"
+    - COMPOSER_FLAGS=""
+
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer install --prefer-lowest --no-interaction --prefer-dist
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
 
 script:
   - ./vendor/bin/phpunit --coverage-text
