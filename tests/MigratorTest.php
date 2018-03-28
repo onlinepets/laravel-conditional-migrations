@@ -46,7 +46,7 @@ class MigratorTest extends TestCase
             $this->app->get('config')
         );
 
-        if (!$repository->repositoryExists()) {
+        if (! $repository->repositoryExists()) {
             $repository->createRepository();
         }
     }
@@ -61,7 +61,7 @@ class MigratorTest extends TestCase
     public function it_handles_regular_migrations_normally()
     {
         $ran = $this->migrator->run([
-            __DIR__ . '/migrations/always',
+            __DIR__.'/migrations/always',
         ]);
 
         $this->assertTrue($this->db->schema()->hasTable('untimed_users'));
@@ -74,8 +74,8 @@ class MigratorTest extends TestCase
     public function it_skips_migrations_that_should_not_run()
     {
         $this->migrator->run([
-            __DIR__ . '/migrations/always',
-            __DIR__ . '/migrations/conditional',
+            __DIR__.'/migrations/always',
+            __DIR__.'/migrations/conditional',
         ]);
 
         $this->assertTrue($this->db->schema()->hasTable('untimed_users'));
@@ -89,7 +89,7 @@ class MigratorTest extends TestCase
         $this->app->get('config')->set('conditional-migrations.always_run', true);
 
         $this->migrator->run([
-            __DIR__ . '/migrations/conditional',
+            __DIR__.'/migrations/conditional',
         ]);
 
         $this->assertTrue($this->db->schema()->hasTable('timed_users_one'));

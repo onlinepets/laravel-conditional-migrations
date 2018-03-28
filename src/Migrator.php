@@ -49,7 +49,7 @@ class Migrator extends LaravelMigrator
             return $this->pretendToRun($migration, 'up');
         }
 
-        if ($migration instanceof ConditionalMigration && !$this->shouldRunNow($migration)) {
+        if ($migration instanceof ConditionalMigration && ! $this->shouldRunNow($migration)) {
             $this->note("<info>Skipped migrating</info>  {$name}");
 
             return;
