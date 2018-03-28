@@ -28,7 +28,10 @@
     "autoload-dev": {
         "psr-4": {
             "Onlinepets\\TimedMigrations\\Tests\\": "tests/"
-        }
+        },
+        "classmap": [
+            "tests/migrations"
+        ]
     },
     "config": {
         "sort-packages": true
