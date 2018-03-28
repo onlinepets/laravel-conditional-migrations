@@ -104,8 +104,8 @@ You can optionally publish the configuration file:
 $ php artisan vendor:publish --provider="Onlinepets\ConditionalMigrations\ServiceProvider"
 ```
 
-This will create the file `config/conditional-migrations.php`, which is where you can configure
-the default timeframe to run your migrations in:
+This will create the file `config/conditional-migrations.php`, which is where you can
+configure whether your migrations should run, _regardless of individual configuration_:
 
 ```php
 return [
@@ -126,9 +126,6 @@ return [
 
 ];
 ```
-
-> **Note:** The value from the configuration file will always take precedence over the one
-> configured in the migration via the `->shouldRun()` method.
 
 ## Contributing
 All contributions (pull requests, issues and feature requests) are
