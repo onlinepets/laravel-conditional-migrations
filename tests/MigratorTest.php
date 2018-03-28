@@ -49,14 +49,11 @@ class MigratorTest extends TestCase
     /** @test */
     public function it_handles_regular_migrations_normally()
     {
-        $ran = $this->migrator->run([
+        $this->migrator->run([
             __DIR__.'/migrations/always',
         ]);
 
         $this->assertTrue($this->db->schema()->hasTable('unconditional_users'));
-
-        $this->assertCount(1, $ran);
-        $this->assertContains('unconditional_users_table', $ran[0]);
     }
 
     /** @test */
