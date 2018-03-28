@@ -2,7 +2,7 @@ version: 2
 
 jobs:
   test_7.0:
-    working_directory: ~/:package
+    working_directory: ~/conditional-migrations
     docker:
       - image: circleci/php:7.0-cli
     steps:
@@ -12,7 +12,7 @@ jobs:
       - run: ./vendor/bin/phpunit
 
   test_7.1:
-    working_directory: ~/:package
+    working_directory: ~/conditional-migrations
     docker:
       - image: circleci/php:7.1-cli
     steps:

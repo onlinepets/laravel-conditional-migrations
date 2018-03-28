@@ -1,6 +1,6 @@
 {
-    "name": "onlinepets/laravel-timed-migrations",
-    "description": "Run your Laravel migrations at a specified time",
+    "name": "onlinepets/laravel-conditional-migrations",
+    "description": "Run your Laravel migrations only when you want them to",
     "keywords": ["laravel", "migrations", "database", "cronjob", "cron", "eloquent"],
     "license": "MIT",
     "authors": [
@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Onlinepets\\TimedMigrations\\": "src/"
+            "Onlinepets\\ConditionalMigrations\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Onlinepets\\TimedMigrations\\Tests\\": "tests/"
+            "Onlinepets\\ConditionalMigrations\\Tests\\": "tests/"
         },
         "classmap": [
             "tests/migrations"
@@ -39,7 +39,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Onlinepets\\TimedMigrations\\ServiceProvider"
+                "Onlinepets\\ConditionalMigrations\\ServiceProvider"
             ]
         }
     }

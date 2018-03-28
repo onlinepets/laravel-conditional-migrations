@@ -1,13 +1,13 @@
 <?php
 
-namespace Onlinepets\TimedMigrations;
+namespace Onlinepets\ConditionalMigrations;
 
 use Illuminate\Config\Repository;
 use Illuminate\Database\ConnectionResolverInterface as Resolver;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 use Illuminate\Database\Migrations\Migrator as LaravelMigrator;
 use Illuminate\Filesystem\Filesystem;
-use Onlinepets\TimedMigrations\Contracts\RunsInTimeframe;
+use Onlinepets\ConditionalMigrations\Contracts\ConditionalMigration;
 
 class Migrator extends LaravelMigrator
 {
@@ -49,14 +49,8 @@ class Migrator extends LaravelMigrator
             return $this->pretendToRun($migration, 'up');
         }
 
-        if ($migration instanceof RunsInTimeframe && !$this->shouldRunNow($migration)) {
-            list($minimum, $maximum) = $migration->getTimesToRunBetween();
-
-            $this->note(
-                "<info>Skipped migrating</info> {$name}, " .
-                "<info>It will run between</info> {$minimum->format('H:i')} " .
-                "<info>and</info> {$maximum->format('H:i')} <info>tonight.</info>"
-            );
+        if ($migration instanceof ConditionalMigration && !$this->shouldRunNow($migration)) {
+            $this->note("<info>Skipped migrating</info> {$name}");
 
             return;
         }
@@ -74,16 +68,14 @@ class Migrator extends LaravelMigrator
     }
 
     /**
-     * @param \Onlinepets\TimedMigrations\Contracts\RunsInTimeframe $migration
+     * @param \Onlinepets\ConditionalMigrations\Contracts\ConditionalMigration $migration
      *
      * @return bool
      */
-    protected function shouldRunNow(RunsInTimeframe $migration): bool
+    protected function shouldRunNow(ConditionalMigration $migration): bool
     {
-        list($minimum, $maximum) = $migration->getTimesToRunBetween();
-
         $shouldRun = value($this->config->get('timed-migrations.should_run'));
 
-        return $shouldRun || (now()->greaterThan($minimum) && now()->lessThan($maximum));
+        return $shouldRun || $migration->shouldRun();
     }
 }

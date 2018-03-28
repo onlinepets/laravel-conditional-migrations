@@ -2,11 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
-use Onlinepets\TimedMigrations\Contracts\RunsInTimeframe;
+use Onlinepets\ConditionalMigrations\Contracts\ConditionalMigration;
 
-class CreateTimedUsersOneTable extends Migration implements RunsInTimeframe
+class CreateTimedUsersOneTable extends Migration implements ConditionalMigration
 {
     /**
      * Run the migrations.
@@ -33,13 +32,10 @@ class CreateTimedUsersOneTable extends Migration implements RunsInTimeframe
     }
 
     /**
-     * @return \Illuminate\Support\Carbon[]
+     * @return bool
      */
-    public function getTimesToRunBetween(): array
+    public function shouldRun(): bool
     {
-        return [
-            new Carbon('-1 hour'),
-            new Carbon('+1 hour'),
-        ];
+        return true;
     }
 }

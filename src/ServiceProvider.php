@@ -1,6 +1,6 @@
 <?php
 
-namespace Onlinepets\TimedMigrations;
+namespace Onlinepets\ConditionalMigrations;
 
 use Illuminate\Support\ServiceProvider as LaravelProvider;
 
@@ -14,7 +14,7 @@ class ServiceProvider extends LaravelProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/timed-migrations.php' => config_path('timed-migrations.php'),
+            __DIR__.'/../config/conditional-migrations.php' => config_path('conditional-migrations.php'),
         ], 'config');
     }
 
@@ -26,9 +26,7 @@ class ServiceProvider extends LaravelProvider
     public function register()
     {
         $this->app->extend('migrator', function ($migrator, $app) {
-            $repository = $app['migration.repository'];
-
-            return new Migrator($repository, $app['db'], $app['files'], $app['config']);
+            return new Migrator($app['migration.repository'], $app['db'], $app['files'], $app['config']);
         });
     }
 }

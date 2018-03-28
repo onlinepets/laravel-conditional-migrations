@@ -10,4 +10,3 @@ enabled:
 
 disabled:
   - length_ordered_imports
-  

@@ -1,6 +1,6 @@
 <?php
 
-namespace Onlinepets\TimedMigrations\Tests;
+namespace Onlinepets\ConditionalMigrations\Tests;
 
 use Illuminate\Config\Repository;
 use Illuminate\Container\Container;
@@ -8,7 +8,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Migrations\DatabaseMigrationRepository;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Facade;
-use Onlinepets\TimedMigrations\Migrator;
+use Onlinepets\ConditionalMigrations\Migrator;
 
 class MigratorTest extends TestCase
 {
@@ -18,7 +18,7 @@ class MigratorTest extends TestCase
     protected $db;
 
     /**
-     * @var \Onlinepets\TimedMigrations\Migrator
+     * @var \Onlinepets\ConditionalMigrations\Migrator
      */
     protected $migrator;
 

@@ -1,4 +1,4 @@
-# Laravel Timed Migrations
+# Laravel Conditional Migrations
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -6,9 +6,9 @@
 [![Build Status][ico-circleci]][link-circleci]
 [![StyleCI][ico-styleci]][link-styleci]
 
-This package allows you to configure migrations to run when you want them to. We
-expose a `RunsInTimeframe` interface, which you can have your migrations
-implement to determine when it should be run.
+This package allows you to configure migrations to run based on a condition. We
+expose a `ConditionalMigration` interface, which you can have your migrations
+implement to determine whether or not it should run.
 
 ## Index
 - [Installation](#installation)
@@ -27,7 +27,7 @@ You'll have to follow a couple of steps to install this package.
 Via [composer](http://getcomposer.org):
 
 ```bash
-$ composer require onlinepets/laravel-timed-migrations
+$ composer require onlinepets/laravel-conditional-migrations
 ```
 
 Or add the package to your dependencies in `composer.json` and run
@@ -36,7 +36,7 @@ Or add the package to your dependencies in `composer.json` and run
 ```json
 {
     "require": {
-        "onlinepets/laravel-timed-migrations": "^1.0"
+        "onlinepets/laravel-conditional-migrations": "^1.0"
     }
 }
 ```
@@ -44,27 +44,27 @@ Or add the package to your dependencies in `composer.json` and run
 
 ### Registering the service provider
 If you're **not** using [auto discovery](https://medium.com/@taylorotwell/package-auto-discovery-in-laravel-5-5-ea9e3ab20518),
-register the `\Onlinepets\TimedMigrations\ServiceProvider` in `config/app.php`:
+register the `\Onlinepets\ConditionalMigrations\ServiceProvider` in `config/app.php`:
 
 ```php
 'providers' => [
     // ...
-    Onlinepets\TimedMigrations\ServiceProvider::class,
+    Onlinepets\ConditionalMigrations\ServiceProvider::class,
 ];
 ```
 
 ## Usage
-To flag a migration to run only between 1AM and 2AM, implement the `RunsInTimeframe`
-interface and its `->getTimesToRunBetween()` method:
+To flag a migration to run only between 1AM and 2AM, implement the `ConditionalMigration`
+interface and its `->shouldRun()` method:
 
 ```php
-use Onlinepets\TimedMigrations\Contracts\RunsInTimeframe;
+use Onlinepets\ConditionalMigrations\Contracts\ConditionalMigration;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Carbon;
 
-class DoSomethingVeryIntensive extends Migration implements RunsInTimeframe
+class DoSomethingVeryIntensive extends Migration implements ConditionalMigration
 {
     public function up()
     {
@@ -80,12 +80,10 @@ class DoSomethingVeryIntensive extends Migration implements RunsInTimeframe
         });
     }
 
-    public function getTimesToRunBetween(): array
+    public function shouldRun(): bool
     {
-        return [
-            new Carbon('1 AM'),
-            new Carbon('2 AM'),
-        ];
+        return (new Carbon('1 AM'))->greaterThan(now()) &&
+            (new Carbon('2 AM'))->lessThan(now());
     }
 }
 ```
@@ -103,10 +101,10 @@ database during the "whitelisted" times. **This package does not implement this*
 You can optionally publish the configuration file:
 
 ```bash
-$ php artisan vendor:publish --provider="Onlinepets\TimedMigrations\ServiceProvider"
+$ php artisan vendor:publish --provider="Onlinepets\ConditionalMigrations\ServiceProvider"
 ```
 
-This will create the file `config/timed-migrations.php`, which is where you can configure
+This will create the file `config/conditional-migrations.php`, which is where you can configure
 the default timeframe to run your migrations in:
 
 ```php
@@ -130,8 +128,7 @@ return [
 ```
 
 > **Note:** The value from the configuration file will always take precedence over the one
-> configured in the migration via the `->getTimesToRunBetween()` method. If you do not wish
-> to use the migration's method, simply return an empty array (`[]`) from there.
+> configured in the migration via the `->shouldRun()` method.
 
 ## Contributing
 All contributions (pull requests, issues and feature requests) are
@@ -139,16 +136,16 @@ welcome. Make sure to read through the [CONTRIBUTING.md](CONTRIBUTING.md) first,
 though. See the [contributors page](../../graphs/contributors) for all contributors.
 
 ## License
-`onlinepets/laravel-timed-migrations` is licensed under the MIT License (MIT). Please
+`onlinepets/laravel-conditional-migrations` is licensed under the MIT License (MIT). Please
 see the [license file](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/onlinepets/laravel-timed-migrations.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/onlinepets/laravel-conditional-migrations.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/onlinepets/laravel-timed-migrations.svg?style=flat-square
-[ico-circleci]: https://img.shields.io/circleci/project/github/onlinepets/laravel-timed-migrations.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/onlinepets/laravel-conditional-migrations.svg?style=flat-square
+[ico-circleci]: https://img.shields.io/circleci/project/github/onlinepets/laravel-conditional-migrations.svg?style=flat-square
 [ico-styleci]: https://styleci.io/repos/:styleci/shield
 
-[link-packagist]: https://packagist.org/packages/onlinepets/laravel-timed-migrations
-[link-downloads]: https://packagist.org/packages/onlinepets/laravel-timed-migrations
-[link-circleci]: https://circleci.com/gh/onlinepets/laravel-timed-migrations
+[link-packagist]: https://packagist.org/packages/onlinepets/laravel-conditional-migrations
+[link-downloads]: https://packagist.org/packages/onlinepets/laravel-conditional-migrations
+[link-circleci]: https://circleci.com/gh/onlinepets/laravel-conditional-migrations
 [link-styleci]: https://styleci.io/repos/:styleci
