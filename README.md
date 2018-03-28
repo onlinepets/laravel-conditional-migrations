@@ -16,6 +16,7 @@ implement to determine when it should be run.
   - [Registering the service provider](#registering-the-service-provider)
 - [Usage](#usage)
   - [Nightly cronjob](#nightly-cronjob)
+- [Configuration](#configuration)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -57,8 +58,6 @@ To flag a migration to run only between 1AM and 2AM, implement the `RunsInTimefr
 interface and its `->getTimesToRunBetween()` method:
 
 ```php
-<?php
-
 use Onlinepets\TimedMigrations\Contracts\RunsInTimeframe;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -98,7 +97,41 @@ adding an index to a table containing lots of data.
 
 ### Nightly cronjob
 To take full advantage of this package, you can schedule a task to migrate the
-database during the "whitelisted" times. **This package does not implement this**. 
+database during the "whitelisted" times. **This package does not implement this**.
+
+## Configuration
+You can optionally publish the configuration file:
+
+```bash
+$ php artisan vendor:publish --provider="Onlinepets\TimedMigrations\ServiceProvider"
+```
+
+This will create the file `config/timed-migrations.php`, which is where you can configure
+the default timeframe to run your migrations in:
+
+```php
+return [
+    
+    'should_run' => env('APP_DEBUG', false),
+    
+];
+``` 
+
+You can also use a closure if you want to do more advanced calculations:
+
+```php
+return [
+
+    'should_run' => function (): bool {
+        // calculate whether it should run
+    },
+
+];
+```
+
+> **Note:** The value from the configuration file will always take precedence over
+> the one configured in the migration's `->getTimesToRunBetween()` method. If you do
+> not wish to use the migration's method, simply return an empty array (`[]`) from there.
 
 ## Contributing
 All contributions (pull requests, issues and feature requests) are

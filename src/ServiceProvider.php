@@ -13,7 +13,9 @@ class ServiceProvider extends LaravelProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__.'/../config/timed-migrations.php' => config_path('timed-migrations.php'),
+        ], 'config');
     }
 
     /**
