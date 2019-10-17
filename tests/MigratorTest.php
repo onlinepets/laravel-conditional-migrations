@@ -4,6 +4,7 @@ namespace Onlinepets\ConditionalMigrations\Tests;
 
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Migrations\DatabaseMigrationRepository;
+use Illuminate\Events\Dispatcher;
 use Illuminate\Filesystem\Filesystem;
 use Onlinepets\ConditionalMigrations\Migrator;
 
@@ -38,6 +39,7 @@ class MigratorTest extends TestCase
             $repository = new DatabaseMigrationRepository($db->getDatabaseManager(), 'migrations'),
             $db->getDatabaseManager(),
             new Filesystem,
+            new Dispatcher($this->app),
             $this->app->get('config')
         );
 
