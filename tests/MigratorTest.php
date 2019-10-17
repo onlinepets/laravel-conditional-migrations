@@ -2,11 +2,11 @@
 
 namespace Onlinepets\ConditionalMigrations\Tests;
 
-use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Migrations\DatabaseMigrationRepository;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Database\Capsule\Manager as DB;
 use Onlinepets\ConditionalMigrations\Migrator;
+use Illuminate\Database\Migrations\DatabaseMigrationRepository;
 
 class MigratorTest extends TestCase
 {

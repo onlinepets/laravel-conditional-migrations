@@ -3,11 +3,11 @@
 namespace Onlinepets\ConditionalMigrations;
 
 use Illuminate\Config\Repository;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Database\Migrations\Migrator as LaravelMigrator;
 use Illuminate\Database\ConnectionResolverInterface as Resolver;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
-use Illuminate\Database\Migrations\Migrator as LaravelMigrator;
-use Illuminate\Filesystem\Filesystem;
 use Onlinepets\ConditionalMigrations\Contracts\ConditionalMigration;
 
 class Migrator extends LaravelMigrator
@@ -30,7 +30,7 @@ class Migrator extends LaravelMigrator
         Filesystem $files,
         Dispatcher $dispatcher,
         Repository $config
-    ){
+    ) {
         parent::__construct($repository, $resolver, $files, $dispatcher);
 
         $this->config = $config;
