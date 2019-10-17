@@ -21,8 +21,9 @@ class Migrator extends LaravelMigrator
      * @param  \Illuminate\Database\Migrations\MigrationRepositoryInterface  $repository
      * @param  \Illuminate\Database\ConnectionResolverInterface  $resolver
      * @param  \Illuminate\Filesystem\Filesystem  $files
-     * @param  \Illuminate\Contracts\Events\Dispatcher|null  $dispatcher
-     * @param \Illuminate\Config\Repository  $config
+     * @param  \Illuminate\Contracts\Events\Dispatcher  $dispatcher
+     * @param  \Illuminate\Config\Repository  $config
+     * @return void
      */
     public function __construct(
         MigrationRepositoryInterface $repository,
