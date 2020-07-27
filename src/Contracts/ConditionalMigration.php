@@ -5,7 +5,7 @@ namespace Onlinepets\ConditionalMigrations\Contracts;
 interface ConditionalMigration
 {
     /**
-     * @return bool
+     * Should the migration run?
      */
     public function shouldRun(): bool;
 }

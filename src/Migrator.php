@@ -17,14 +17,6 @@ class Migrator extends LaravelMigrator
      */
     protected $config;
 
-    /**
-     * @param  \Illuminate\Database\Migrations\MigrationRepositoryInterface  $repository
-     * @param  \Illuminate\Database\ConnectionResolverInterface  $resolver
-     * @param  \Illuminate\Filesystem\Filesystem  $files
-     * @param  \Illuminate\Contracts\Events\Dispatcher  $dispatcher
-     * @param  \Illuminate\Config\Repository  $config
-     * @return void
-     */
     public function __construct(
         MigrationRepositoryInterface $repository,
         Resolver $resolver,
@@ -43,9 +35,8 @@ class Migrator extends LaravelMigrator
      * @param  string  $file
      * @param  int  $batch
      * @param  bool  $pretend
-     * @return void
      */
-    protected function runUp($file, $batch, $pretend)
+    protected function runUp($file, $batch, $pretend): void
     {
         // First we will resolve a "real" instance of the migration class from this
         // migration file name. Once we have the instances we can run the actual
@@ -55,7 +46,8 @@ class Migrator extends LaravelMigrator
         );
 
         if ($pretend) {
-            return $this->pretendToRun($migration, 'up');
+            $this->pretendToRun($migration, 'up');
+            return;
         }
 
         if ($migration instanceof ConditionalMigration && ! $this->shouldRunNow($migration)) {
@@ -80,10 +72,6 @@ class Migrator extends LaravelMigrator
         $this->note("<info>Migrated:</info>  {$name} ({$runTime} seconds)");
     }
 
-    /**
-     * @param  \Onlinepets\ConditionalMigrations\Contracts\ConditionalMigration  $migration
-     * @return bool
-     */
     protected function shouldRunNow(ConditionalMigration $migration): bool
     {
         $alwaysRun = value($this->config->get('conditional-migrations.always_run'));
