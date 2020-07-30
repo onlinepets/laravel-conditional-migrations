@@ -31,9 +31,6 @@ class CreateConditionalUsersOneTable extends Migration implements ConditionalMig
         Schema::dropIfExists('conditional_users_one');
     }
 
-    /**
-     * @return bool
-     */
     public function shouldRun(): bool
     {
         return true;

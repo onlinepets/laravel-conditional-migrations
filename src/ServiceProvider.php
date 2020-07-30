@@ -9,13 +9,13 @@ class ServiceProvider extends LaravelProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../src/conditional-migrations.php' => config_path('conditional-migrations.php'),
+            __DIR__.'/../src/conditional-migrations.php' => config_path('conditional-migrations.php'),
         ], 'config');
     }
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../src/conditional-migrations.php', 'conditional-migrations');
+        $this->mergeConfigFrom(__DIR__.'/../src/conditional-migrations.php', 'conditional-migrations');
 
         $this->app->extend('migrator', static function ($migrator, $app): Migrator {
             return new Migrator(

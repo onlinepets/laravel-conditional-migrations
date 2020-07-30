@@ -3,11 +3,11 @@
 namespace MLL\ConditionalMigrations;
 
 use Illuminate\Config\Repository;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Database\Migrations\Migrator as LaravelMigrator;
 use Illuminate\Database\ConnectionResolverInterface as Resolver;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
+use Illuminate\Database\Migrations\Migrator as LaravelMigrator;
+use Illuminate\Filesystem\Filesystem;
 use MLL\ConditionalMigrations\Contracts\ConditionalMigration;
 
 class Migrator extends LaravelMigrator
@@ -47,6 +47,7 @@ class Migrator extends LaravelMigrator
 
         if ($pretend) {
             $this->pretendToRun($migration, 'up');
+
             return;
         }
 
