@@ -68,6 +68,10 @@ You can also use a closure if you want to do more advanced calculations:
 },
 ```
 
+## Changelog
+
+All notable changes to this project are documented in [`CHANGELOG.md`](CHANGELOG.md).
+
 ## Contributing
 
 Contributions are welcome, see [CONTRIBUTING.md](CONTRIBUTING.md).
