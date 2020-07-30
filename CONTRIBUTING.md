@@ -1,5 +1,5 @@
 # How to contribute
-Thank you for considering to contribute to this repository! This file will walk you through all the steps to ensure both
+Thank you for considering contributing to this repository! This file will walk you through all the steps to ensure both
 you and I have a good time submitting and reviewing your contribution. First off, some basic rules and reading material:
 
 - Submit your work in a new branch and make the PR to the master branch.
