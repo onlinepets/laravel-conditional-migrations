@@ -1,9 +1,9 @@
 <?php
 
-namespace Onlinepets\ConditionalMigrations\Tests;
+namespace MLL\ConditionalMigrations\Tests;
 
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
-use Onlinepets\ConditionalMigrations\ServiceProvider;
+use MLL\ConditionalMigrations\ServiceProvider;
 
 abstract class TestCase extends AbstractPackageTestCase
 {

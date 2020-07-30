@@ -1,6 +1,6 @@
 <?php
 
-namespace Onlinepets\ConditionalMigrations\Contracts;
+namespace MLL\ConditionalMigrations\Contracts;
 
 interface ConditionalMigration
 {

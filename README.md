@@ -1,29 +1,20 @@
 # Laravel Conditional Migrations
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
-
-[ico-version]: https://img.shields.io/packagist/v/onlinepets/laravel-conditional-migrations.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/onlinepets/laravel-conditional-migrations.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/onlinepets/laravel-conditional-migrations.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/127100183/shield
-
-[link-packagist]: https://packagist.org/packages/onlinepets/laravel-conditional-migrations
-[link-downloads]: https://packagist.org/packages/onlinepets/laravel-conditional-migrations
-[link-travis]: https://travis-ci.org/onlinepets/laravel-conditional-migrations
-[link-styleci]: https://styleci.io/repos/127100183
+[![CI Status](https://github.com/mll-lab/laravel-conditional-migrations/workflows/Continuous%20Integration/badge.svg)](https://github.com/mll-lab/laravel-conditional-migrations/actions)
+[![codecov](https://codecov.io/gh/mll-lab/laravel-conditional-migrations/branch/master/graph/badge.svg)](https://codecov.io/gh/mll-lab/laravel-conditional-migrations)
+[![StyleCI](https://github.styleci.io/repos/215751793/shield?branch=master)](https://github.styleci.io/repos/215751793)
+[![Latest Stable Version](https://poser.pugx.org/mll-lab/laravel-conditional-migrations/v/stable)](https://packagist.org/packages/mll-lab/laravel-conditional-migrations)
+[![Total Downloads](https://poser.pugx.org/mll-lab/laravel-conditional-migrations/downloads)](https://packagist.org/packages/mll-lab/laravel-conditional-migrations)
 
 Run migrations only if a condition is true.
+
+Based on https://github.com/onlinepets/laravel-conditional-migrations
 
 ## Installation
 
 Via [composer](http://getcomposer.org):
 
-    composer require onlinepets/laravel-conditional-migrations
+    composer require mll-lab/laravel-conditional-migrations
 
 ## Usage
 
@@ -31,7 +22,7 @@ To run a migration conditionally, implement the `ConditionalMigration`
 interface and its `->shouldRun()` method:
 
 ```php
-use Onlinepets\ConditionalMigrations\Contracts\ConditionalMigration;
+use MLL\ConditionalMigrations\Contracts\ConditionalMigration;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Carbon;
 

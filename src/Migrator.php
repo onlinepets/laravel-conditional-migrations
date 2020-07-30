@@ -1,6 +1,6 @@
 <?php
 
-namespace Onlinepets\ConditionalMigrations;
+namespace MLL\ConditionalMigrations;
 
 use Illuminate\Config\Repository;
 use Illuminate\Filesystem\Filesystem;
@@ -8,7 +8,7 @@ use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\Migrations\Migrator as LaravelMigrator;
 use Illuminate\Database\ConnectionResolverInterface as Resolver;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
-use Onlinepets\ConditionalMigrations\Contracts\ConditionalMigration;
+use MLL\ConditionalMigrations\Contracts\ConditionalMigration;
 
 class Migrator extends LaravelMigrator
 {

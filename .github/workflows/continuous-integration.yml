@@ -1,0 +1,105 @@
+# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "master"
+
+name: "Continuous Integration"
+
+jobs:
+  composer-normalize:
+    name: "composer-normalize"
+
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v2.0.0"
+        with:
+          ref: "${{ github.head_ref }}"
+
+      - name: "Run composer normalize"
+        uses: "docker://ergebnis/composer-normalize-action:0.8.0"
+
+      - uses: "stefanzweifel/git-auto-commit-action@v4.1.6"
+        with:
+          commit_message: "Normalize composer.json"
+          branch: "${{ github.head_ref }}"
+
+  coding-standards:
+    name: "Coding Standards"
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@master
+
+      - name: "Validate composer.json and composer.lock"
+        run: php7.3 /usr/bin/composer validate
+
+      - name: "Install locked dependencies with composer"
+        run: php7.3 /usr/bin/composer install --no-interaction --no-progress --no-suggest
+
+  tests:
+    name: "Tests"
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version:
+          - 7.2
+          - 7.3
+          - 7.4
+
+        laravel-version:
+          - 5.6.*
+          - 5.7.*
+          - 5.8.*
+          - ^6.0
+          - ^7.0
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@master
+
+      - name: "Install PHP with extensions"
+        uses: shivammathur/setup-php@1.6.1
+        with:
+          coverage: none
+          extensions: "mbstring"
+          php-version: ${{ matrix.php-version }}
+
+      - name: "Install dependencies with composer"
+        run: composer require illuminate/contracts:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-interaction --no-suggest
+
+      - name: "Run unit tests with phpunit/phpunit"
+        run: vendor/bin/phpunit
+
+  code-coverage:
+    name: "Code Coverage"
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@master
+
+      - name: "Install locked dependencies with composer"
+        run: php7.3 /usr/bin/composer install --no-interaction --no-progress --no-suggest
+
+      - name: "Dump Xdebug filter with phpunit/phpunit"
+        run: php7.3 vendor/bin/phpunit --dump-xdebug-filter=.build/phpunit/xdebug-filter.php
+
+      - name: "Collect code coverage with Xdebug and phpunit/phpunit"
+        run: php7.3 vendor/bin/phpunit --coverage-clover=build/logs/clover.xml --prepend=.build/phpunit/xdebug-filter.php
+
+      # Not using codecov/codecov-action for now, as the build is prohibitively slow
+      - name: "Download code coverage uploader for Codecov.io"
+        run: curl -s https://codecov.io/bash -o codecov
+
+      - name: "Send code coverage report to Codecov.io"
+        run: bash codecov -t ${{ secrets.CODECOV_TOKEN }}

@@ -1,10 +1,10 @@
 <?php
 
-namespace Onlinepets\ConditionalMigrations\Tests;
+namespace MLL\ConditionalMigrations\Tests;
 
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 use Illuminate\Database\Migrations\Migrator as LaravelMigrator;
-use Onlinepets\ConditionalMigrations\Migrator;
+use MLL\ConditionalMigrations\Migrator;
 
 class ServiceProviderTest extends TestCase
 {

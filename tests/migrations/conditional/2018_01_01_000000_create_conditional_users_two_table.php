@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Onlinepets\ConditionalMigrations\Contracts\ConditionalMigration;
+use MLL\ConditionalMigrations\Contracts\ConditionalMigration;
 
 class CreateConditionalUsersTwoTable extends Migration implements ConditionalMigration
 {

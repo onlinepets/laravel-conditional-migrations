@@ -1,11 +1,11 @@
 <?php
 
-namespace Onlinepets\ConditionalMigrations\Tests;
+namespace MLL\ConditionalMigrations\Tests;
 
 use Illuminate\Events\Dispatcher;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Database\Capsule\Manager as DB;
-use Onlinepets\ConditionalMigrations\Migrator;
+use MLL\ConditionalMigrations\Migrator;
 use Illuminate\Database\Migrations\DatabaseMigrationRepository;
 
 class MigratorTest extends TestCase
@@ -16,7 +16,7 @@ class MigratorTest extends TestCase
     protected $db;
 
     /**
-     * @var \Onlinepets\ConditionalMigrations\Migrator
+     * @var \MLL\ConditionalMigrations\Migrator
      */
     protected $migrator;
 

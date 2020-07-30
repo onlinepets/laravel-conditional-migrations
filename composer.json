@@ -1,7 +1,12 @@
 {
-    "name": "onlinepets/laravel-conditional-migrations",
+    "name": "mll-lab/laravel-conditional-migrations",
     "description": "Run your Laravel migrations only when you want them to",
-    "keywords": ["laravel", "migrations", "database", "cronjob", "cron", "eloquent"],
+    "keywords": [
+        "laravel",
+        "migrations",
+        "database",
+        "php"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -12,6 +17,10 @@
         {
             "name": "Thomas Moors",
             "email": "thomas.moors@medpets.nl"
+        },
+        {
+            "name": "Benedikt Franke",
+            "email": "benedikt@franke.tech"
         }
     ],
     "require": {
@@ -21,27 +30,27 @@
     "require-dev": {
         "graham-campbell/testbench": "^5.3.1"
     },
-    "autoload": {
-        "psr-4": {
-            "Onlinepets\\ConditionalMigrations\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Onlinepets\\ConditionalMigrations\\Tests\\": "tests/"
-        },
-        "classmap": [
-            "tests/migrations"
-        ]
-    },
     "config": {
         "sort-packages": true
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Onlinepets\\ConditionalMigrations\\ServiceProvider"
+                "MLL\\ConditionalMigrations\\ServiceProvider"
             ]
         }
+    },
+    "autoload": {
+        "psr-4": {
+            "MLL\\ConditionalMigrations\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MLL\\ConditionalMigrations\\Tests\\": "tests/"
+        },
+        "classmap": [
+            "tests/migrations"
+        ]
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Onlinepets\ConditionalMigrations;
+namespace MLL\ConditionalMigrations;
 
 use Illuminate\Support\ServiceProvider as LaravelProvider;
 
