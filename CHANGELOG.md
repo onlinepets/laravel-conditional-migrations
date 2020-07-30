@@ -11,6 +11,10 @@ You can find and compare releases at the [GitHub release page](https://github.co
 
 ## 2.0.0
 
+### Added
+
+- Add support for Laravel 6 and 7
+
 ### Removed
 
 - Remove support for PHP 7.1, Laravel 5.5 and PHPUnit 6
