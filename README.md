@@ -3,10 +3,12 @@
 [![CI Status](https://github.com/mll-lab/laravel-conditional-migrations/workflows/Continuous%20Integration/badge.svg)](https://github.com/mll-lab/laravel-conditional-migrations/actions)
 [![codecov](https://codecov.io/gh/mll-lab/laravel-conditional-migrations/branch/master/graph/badge.svg)](https://codecov.io/gh/mll-lab/laravel-conditional-migrations)
 [![StyleCI](https://github.styleci.io/repos/215751793/shield?branch=master)](https://github.styleci.io/repos/215751793)
-[![Latest Stable Version](https://poser.pugx.org/mll-lab/laravel-conditional-migrations/v/stable)](https://packagist.org/packages/mll-lab/laravel-conditional-migrations)
-[![Total Downloads](https://poser.pugx.org/mll-lab/laravel-conditional-migrations/downloads)](https://packagist.org/packages/mll-lab/laravel-conditional-migrations)
 
-Run migrations only if a condition is true.
+[![Packagist](https://img.shields.io/packagist/dt/mll-lab/laravel-conditional-migrations.svg)](https://packagist.org/packages/mll-lab/laravel-conditional-migrations)
+[![Latest Stable Version](https://poser.pugx.org/mll-lab/laravel-conditional-migrations/v/stable)](https://packagist.org/packages/mll-lab/laravel-conditional-migrations)
+[![GitHub license](https://img.shields.io/github/license/mll-lab/laravel-conditional-migrations.svg)](https://github.com/mll-lab/laravel-conditional-migrations/blob/master/LICENSE)
+
+Run migrations only if a condition is true
 
 Based on https://github.com/onlinepets/laravel-conditional-migrations
 
