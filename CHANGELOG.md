@@ -9,6 +9,12 @@ You can find and compare releases at the [GitHub release page](https://github.co
 
 ## Unreleased
 
+## 2.0.1
+
+### Fixed
+
+- Fix PHP version constraint from 7.1 to 7.2
+
 ## 2.0.0
 
 ### Added
