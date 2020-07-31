@@ -1,6 +1,9 @@
-We don't maintain this version anymore, checkout [Laravel conditional migrations](https://github.com/mll-lab/laravel-conditional-migrations) for the latest version
+# Deprecated:
+## We don't maintain this version anymore, checkout [Laravel conditional migrations](https://github.com/mll-lab/laravel-conditional-migrations) for the latest version
 
-# Laravel Conditional Migrations
+---
+
+## Laravel Conditional Migrations
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
