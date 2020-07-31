@@ -1,3 +1,5 @@
+We don't maintain this version anymore, checkout [Laravel conditional migrations](https://github.com/mll-lab/laravel-conditional-migrations) for the latest version
+
 # Laravel Conditional Migrations
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
