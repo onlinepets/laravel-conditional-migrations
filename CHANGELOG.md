@@ -9,6 +9,13 @@ You can find and compare releases at the [GitHub release page](https://github.co
 
 ## Unreleased
 
+## 2.1.0
+
+### Added
+
+- Support Laravel 8
+- Support PHP 8
+
 ## 2.0.1
 
 ### Fixed

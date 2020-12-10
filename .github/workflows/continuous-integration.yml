@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - "master"
+      - master
 
 name: "Continuous Integration"
 
@@ -12,21 +12,21 @@ jobs:
   composer-normalize:
     name: "composer-normalize"
 
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
 
     steps:
       - name: "Checkout"
-        uses: "actions/checkout@v2.0.0"
+        uses: actions/checkout@v2
         with:
-          ref: "${{ github.head_ref }}"
+          ref: ${{ github.head_ref }}
 
       - name: "Run composer normalize"
-        uses: "docker://ergebnis/composer-normalize-action:0.8.0"
+        uses: docker://ergebnis/composer-normalize-action:0.8.0
 
-      - uses: "stefanzweifel/git-auto-commit-action@v4.1.6"
+      - uses: "stefanzweifel/git-auto-commit-action@v4"
         with:
-          commit_message: "Normalize composer.json"
-          branch: "${{ github.head_ref }}"
+          commit_message: Normalize composer.json
+          branch: ${{ github.head_ref }}
 
   coding-standards:
     name: "Coding Standards"
@@ -35,13 +35,13 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: "Validate composer.json and composer.lock"
-        run: php7.3 /usr/bin/composer validate
+        run: composer validate
 
       - name: "Install locked dependencies with composer"
-        run: php7.3 /usr/bin/composer install --no-interaction --no-progress --no-suggest
+        run: composer install --no-interaction --no-progress
 
   tests:
     name: "Tests"
@@ -54,27 +54,29 @@ jobs:
           - 7.2
           - 7.3
           - 7.4
+          - 8.0
 
         laravel-version:
           - 5.6.*
           - 5.7.*
           - 5.8.*
-          - ^6.0
-          - ^7.0
+          - ^6
+          - ^7
+          - ^8
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@1.6.1
+        uses: shivammathur/setup-php@2
         with:
           coverage: none
           extensions: "mbstring"
           php-version: ${{ matrix.php-version }}
 
       - name: "Install dependencies with composer"
-        run: composer require illuminate/contracts:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-interaction --no-suggest
+        run: composer require illuminate/contracts:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-interaction
 
       - name: "Run unit tests with phpunit/phpunit"
         run: vendor/bin/phpunit
@@ -86,16 +88,16 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: "Install locked dependencies with composer"
-        run: php7.3 /usr/bin/composer install --no-interaction --no-progress --no-suggest
+        run: composer install --no-interaction --no-progress
 
       - name: "Dump Xdebug filter with phpunit/phpunit"
-        run: php7.3 vendor/bin/phpunit --dump-xdebug-filter=.build/phpunit/xdebug-filter.php
+        run: vendor/bin/phpunit --dump-xdebug-filter=.build/phpunit/xdebug-filter.php
 
       - name: "Collect code coverage with Xdebug and phpunit/phpunit"
-        run: php7.3 vendor/bin/phpunit --coverage-clover=build/logs/clover.xml --prepend=.build/phpunit/xdebug-filter.php
+        run: vendor/bin/phpunit --coverage-clover=build/logs/clover.xml --prepend=.build/phpunit/xdebug-filter.php
 
       # Not using codecov/codecov-action for now, as the build is prohibitively slow
       - name: "Download code coverage uploader for Codecov.io"
